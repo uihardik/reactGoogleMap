@@ -1,5 +1,6 @@
 import React from "react";
 import Autocomplete from 'react-google-autocomplete';
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 import { connect } from "react-redux";
 // nodejs library that concatenates classes
 import classNames from "classnames";
@@ -37,6 +38,17 @@ class LandingPage extends React.Component {
 
   render() {
     const { classes, ...rest } = this.props;
+
+    const MyMapComponent = withScriptjs(withGoogleMap((props) =>
+    <GoogleMap
+      defaultZoom={8}
+      defaultCenter={{ lat: -34.397, lng: 150.644 }}
+    >
+      {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} />}
+    </GoogleMap>
+    ))
+
+
     return (
       <div>
         <Header
@@ -77,15 +89,15 @@ class LandingPage extends React.Component {
         </Parallax>
         <div className={classNames(classes.main, classes.mainRaised)}>
           <div className={classes.container}>
-            <ProductSection />
-            <Autocomplete
-                style={{width: '90%'}}
-                onPlaceSelected={(place) => {
-                  this.setState({country:place});
-                }}
-                types={['(regions)']}
-                componentRestrictions={{country: "ru"}}
+          <MyMapComponent
+            isMarkerShown
+            googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+            loadingElement={<div style={{ height: `100%` }} />}
+            containerElement={<div style={{ height: `400px` }} />}
+            mapElement={<div style={{ height: `100%` }} />}
             />
+
+            <ProductSection />
             <TeamSection />
           </div>
         </div>
