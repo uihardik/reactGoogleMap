@@ -8,6 +8,13 @@ npm install
 
 npm start
 
+TASK
+
+landing page has button and map
+user serach on map that searched data show on history page.
+
+click on searched history 
+
 ### What's included
 
 Within the download you'll find the following directories and files:
