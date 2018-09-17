@@ -7,8 +7,8 @@ import { createStore, applyMiddleware, compose } from "redux";
 import createSagaMiddleware from "redux-saga";
 import { Provider } from "react-redux";
 
-import { reducer } from "./redux";
-import { watcherSaga } from "./sagas";
+import { reducer } from "./reducer/redux";
+import { watcherSaga } from "sagas";
 
 import indexRoutes from "routes/index.jsx";
 

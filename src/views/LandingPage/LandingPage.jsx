@@ -31,8 +31,6 @@ import ProductSection from "./Sections/ProductSection.jsx";
 import TeamSection from "./Sections/TeamSection.jsx";
 import WorkSection from "./Sections/WorkSection.jsx";
 
-import { watcherSaga } from 'sagas'
-
 const dashboardRoutes = [];
 
 class LandingPage extends React.Component {
@@ -43,7 +41,7 @@ class LandingPage extends React.Component {
       searchedPlace:''
     }
   }
-    
+
 
   render() {
     const { classes, country, ...rest } = this.props;
@@ -215,7 +213,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return{
+  return {
     onRequestcountry: (place) => dispatch({ type: "FETCH_LOCATION", place })
   }
 };
